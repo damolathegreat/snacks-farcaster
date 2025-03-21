@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snacks - Daily Digest for Farcaster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5869ff;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #eaecef;
+            --dark-gray: #333333;
+            --text-gray: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header and Navigation */
+        header {
+            padding: 28px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 22px;
+            margin-left: 10px;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 140px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            max-width: 780px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1a2251 0%, #5869ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 48px;
+            max-width: 600px;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+        
+        /* Waitlist Form */
+        .waitlist-form {
+            display: flex;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+            box-shadow: 0 8px 30px rgba(88, 105, 255, 0.12);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .input-group {
+            flex-grow: 1;
+            position: relative;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 18px 22px;
+            border: 1px solid transparent;
+            font-size: 16px;
+            outline: none;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(88, 105, 255, 0.2);
+        }
+        
+        .input-group input::placeholder {
+            color: #aab0c5;
+        }
+        
+        .waitlist-form button {
+            background: linear-gradient(135deg, #5869ff 0%, #7e8aff 100%);
+            color: var(--white);
+            border: none;
+            padding: 0 24px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .waitlist-form button:hover {
+            background: linear-gradient(135deg, #4a5ae0 0%, #6b79e8 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(88, 105, 255, 0.2);
+        }
+        
+        .waitlist-form button:active {
+            transform: translateY(0);
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #ecfdf5;
+            color: #065f46;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 500;
+            animation: fadeIn 0.5s ease;
+            border: 1px solid #a7f3d0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 14px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+            
+            .waitlist-form {
+                flex-direction: column;
+                box-shadow: none;
+                max-width: 100%;
+            }
+            
+            .input-group input {
+                border: 1px solid var(--medium-gray);
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+            
+            .waitlist-form button {
+                width: 100%;
+                border-radius: 12px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <div class="logo">
+                    <img src="logo.png" alt="Snacks Logo">
+                    <span class="logo-text">Snacks</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Your personalized Farcaster digest</h1>
+                <p>Discover content that matters to <em>you</em> — curated onchain updates and trending conversations from the Farcaster ecosystem, tailored to your interests and delivered daily on Frames.</p>
+                
+                <form class="waitlist-form" id="waitlistForm" name="waitlist" method="POST" data-netlify="true">
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Email (optional)" id="emailInput">
+                    </div>
+                    <button type="submit">Get Early Access</button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    You're in! We'll notify you when your personalized digest is ready.
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Snacks. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('emailInput').value;
+            const successMessage = document.getElementById('successMessage');
+            
+            // Create a FormData object to submit the form data
+            const formData = new FormData(this);
+            
+            // Submit the form data to Netlify using fetch
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Hide the message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+            });
+        });
+    </script>
+</body>
+</html>
